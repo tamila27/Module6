@@ -57,14 +57,6 @@ public class MusicalShopManager {
         }
     }
 
-    private static void sellRandomMusicalInstrumenntFromShop(MusicalShop musicalShop){
-        MusicalInstrument musicalInstrument = musicalShop.getMusicalInstrumentByIndex(getRandomMusicalInstrumentsCount(musicalShop));
-
-        if(musicalInstrument != null){
-            musicalShop.sellMusicalInstrument(musicalInstrument);
-        }
-    }
-
     private static Map<String, Integer> getRandomOrder(MusicalShop musicalShop){
         Map<String, Integer> order = new HashMap<>();
 
