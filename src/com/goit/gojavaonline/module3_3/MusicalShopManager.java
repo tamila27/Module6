@@ -58,7 +58,7 @@ public class MusicalShopManager {
     }
 
     private static void sellRandomMusicalInstrumenntFromShop(MusicalShop musicalShop){
-        MusicalInstrument musicalInstrument = musicalShop.getMusicalInstrumentByIndex((int)(Math.random()*musicalShop.getMusicalInstruments().size()));
+        MusicalInstrument musicalInstrument = musicalShop.getMusicalInstrumentByIndex(getRandomMusicalInstrumentsCount(musicalShop));
 
         if(musicalInstrument != null){
             musicalShop.sellMusicalInstrument(musicalInstrument);
@@ -68,10 +68,14 @@ public class MusicalShopManager {
     private static Map<String, Integer> getRandomOrder(MusicalShop musicalShop){
         Map<String, Integer> order = new HashMap<>();
 
-        order.put(MusicalInstruments.GUITAR.toString(), (int)(Math.random()*musicalShop.getMusicalInstruments().size()));
-        order.put(MusicalInstruments.TRUMPET.toString(), (int)(Math.random()*musicalShop.getMusicalInstruments().size()));
-        order.put(MusicalInstruments.PIANO.toString(), (int)(Math.random()*musicalShop.getMusicalInstruments().size()));
+        order.put(MusicalInstruments.GUITAR.toString(), getRandomMusicalInstrumentsCount(musicalShop));
+        order.put(MusicalInstruments.TRUMPET.toString(), getRandomMusicalInstrumentsCount(musicalShop));
+        order.put(MusicalInstruments.PIANO.toString(), getRandomMusicalInstrumentsCount(musicalShop));
 
         return order;
+    }
+
+    private static int getRandomMusicalInstrumentsCount(MusicalShop musicalShop){
+        return (int)(Math.random()*musicalShop.getMusicalInstruments().size());
     }
 }

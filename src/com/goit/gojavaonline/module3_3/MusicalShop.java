@@ -1,5 +1,7 @@
 package com.goit.gojavaonline.module3_3;
 
+import com.goit.gojavaonline.PrintUtility;
+
 import java.util.*;
 
 public class MusicalShop {
@@ -69,20 +71,9 @@ public class MusicalShop {
 
     @Override
     public String toString(){
-        String listOfMusicalInstruments = "\nMusical shop contains musical instruments: \n";
-        if(getMusicalInstruments().size() > 0){
-            /*for(MusicalInstrument musicalInstrument : getMusicalInstruments()){
-                listOfMusicalInstruments += musicalInstrument.getMusicalInstrumentName()+"\n";
-            }*/
-            for(MusicalInstruments key: getMusicalInstrumentCounter().keySet()){
-                Integer count = getMusicalInstrumentCounter().get(key);
-                if(count == null){
-                    count = 0;
-                }
-                listOfMusicalInstruments += key.toString()+ " : " + count + "\n";
-            }
-        }
-        return listOfMusicalInstruments;
+        StringBuilder stringBuilder = new StringBuilder("\nMusical shop contains musical instruments: \n");
+        stringBuilder.append(PrintUtility.listToString(getMusicalInstruments()).toString());
+        return stringBuilder.toString();
     }
 
     public List<MusicalInstrument> prepareInstruments(Map<String, Integer> order) throws IllegalMusicalInstrumentException {
